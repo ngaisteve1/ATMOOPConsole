@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ATMOOPProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ATMOOPProject.StaticClass
 {
-    internal static class AtmScreen
+    internal class AtmScreen
     {
         // This class in charge of printing out text in user interface.
 
@@ -74,6 +75,23 @@ namespace ATMOOPProject.StaticClass
         internal static void PrintMakeWithdrawalScreen()
         {
             Console.Write("Enter amount: ");
+        }
+
+        // This is the only non-static method.
+        // Reason is this method needs to return an object.
+        // ToDo: Find other way to solve this design issue.
+        internal VMThirdPartyTransfer ThirdPartyTransferForm()
+        {
+            var vMThirdPartyTransfer = new VMThirdPartyTransfer();
+
+            vMThirdPartyTransfer.RecipientBankAccountNumber = Validator.GetValidIntInputAmt("recipient's account number");
+
+            vMThirdPartyTransfer.TransferAmount = Validator.GetValidDecimalInputAmt("amount");
+
+            vMThirdPartyTransfer.RecipientBankAccountName = Utility.GetRawInput("recipient's account name");
+            // no validation here yet.
+
+            return vMThirdPartyTransfer;
         }
 
         internal static void PrintEnterMessage()

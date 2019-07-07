@@ -2,9 +2,11 @@
 using ATMOOPProject.Enum;
 using ATMOOPProject.Interface;
 using ATMOOPProject.StaticClass;
+using ATMOOPProject.ViewModels;
 using ConsoleTables;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ATMOOPProject
 {
@@ -14,8 +16,8 @@ namespace ATMOOPProject
         // method will be the only methods to be called when client code run this application.
 
         // This list is used in replace of database in this version.
-        private List<UserBankAccount> _accountList; 
-        private UserBankAccount selectedAccount;       
+        private List<UserBankAccount> _accountList;
+        private UserBankAccount selectedAccount;
         private const decimal minimum_kept_amt = 20;
         private List<Transaction> _listOfTransactions;
 
@@ -120,7 +122,9 @@ namespace ATMOOPProject
                     MakeWithdrawal();
                     break;
                 case (int)SecureMenu.ThirdPartyTransfer:
-
+                    var screen = new AtmScreen();
+                    var vMThirdPartyTransfer = screen.ThirdPartyTransferForm();
+                    PerformThirdPartyTransfer(vMThirdPartyTransfer);
                     break;
                 case (int)SecureMenu.ViewTransaction:
                     ViewTransaction();
@@ -157,6 +161,8 @@ namespace ATMOOPProject
 
             Utility.PrintUserInputLabel("\nCheck and counting bank notes.");
             Utility.printDotAnimation();
+            Console.SetCursorPosition(0, Console.CursorTop-3);
+            Console.WriteLine("");
 
             if (transaction_amt <= 0)
             {
@@ -251,18 +257,92 @@ namespace ATMOOPProject
 
         }
 
+        public void PerformThirdPartyTransfer(VMThirdPartyTransfer vMThirdPartyTransfer)
+        {
+            if (vMThirdPartyTransfer.TransferAmount <= 0)
+            {
+                Utility.PrintMessage("Amount needs to be more than zero. Try again.", false);
+                return;
+            }
+
+            // Check giver's account balance - Start
+            if (vMThirdPartyTransfer.TransferAmount > selectedAccount.AccountBalance)
+            {
+                Utility.PrintMessage($"Withdrawal failed. You do not have enough " +
+                    "fund to withdraw {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)}", false);
+                return;
+            }
+
+            if (selectedAccount.AccountBalance - vMThirdPartyTransfer.TransferAmount < minimum_kept_amt)
+            {
+                Utility.PrintMessage($"Withdrawal failed. Your account needs to have " +
+                    "minimum {Utility.FormatAmount(minimum_kept_amt)}", false);
+                return;
+            }
+            // Check giver's account balance - End
+
+            // Check if receiver's bank account number is valid.
+            var selectedBankAccountReceiver = (from b in _accountList
+                                               where b.AccountNumber == vMThirdPartyTransfer.RecipientBankAccountNumber
+                                               select b).FirstOrDefault();
+
+            if (selectedBankAccountReceiver == null)
+            {
+                Utility.PrintMessage($"Third party transfer failed. Receiver bank account number is invalid.", false);
+                return;
+            }
+
+            if (selectedBankAccountReceiver.FullName != vMThirdPartyTransfer.RecipientBankAccountName)
+            {
+                Utility.PrintMessage($"Third party transfer failed. Recipient's account name does not match.", false);
+                return;
+            }
+
+            // Bind transaction_amt to Transaction object
+            // Add transaction record (Giver) - Start
+            Transaction transaction = new Transaction()
+            {
+                TransactionDate = DateTime.Now,
+                TransactionType = TransactionType.ThirdPartyTransfer,
+                TransactionAmount = Math.Abs(vMThirdPartyTransfer.TransferAmount),
+                Description = $"Transfered to {selectedBankAccountReceiver.AccountNumber} ({selectedBankAccountReceiver.FullName})"
+            };
+            _listOfTransactions.Add(transaction);
+            // Add transaction record (Giver) - End
+
+            // Update balance amount (Giver)
+            selectedAccount.AccountBalance = selectedAccount.AccountBalance - vMThirdPartyTransfer.TransferAmount;
+
+            // Add transaction record (Receiver) - Start
+            transaction = new Transaction()
+            {
+                TransactionDate = DateTime.Now,
+                TransactionType = TransactionType.ThirdPartyTransfer,
+                TransactionAmount = vMThirdPartyTransfer.TransferAmount,
+                Description = $"Transfered from {selectedAccount.AccountNumber} ({selectedAccount.FullName})"
+            };
+            _listOfTransactions.Add(transaction);
+            // Add transaction record (Receiver) - End
+
+            // Update balance amount (Receiver)
+            selectedBankAccountReceiver.AccountBalance = selectedBankAccountReceiver.AccountBalance + vMThirdPartyTransfer.TransferAmount;
+
+            Utility.PrintMessage($"You have successfully transferred out " + 
+                " {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)} to {vMThirdPartyTransfer.RecipientBankAccountName}", true);
+        }
+
         private bool PreviewBankNotesCount(decimal amount)
         {
             int hundredNotesCount = (int)amount / 100;
             int fiftyNotesCount = ((int)amount % 100) / 50;
             int tenNotesCount = ((int)amount % 50) / 10;
 
-            Console.WriteLine("\nSummary");
-            Console.WriteLine("-------");
-            Console.WriteLine($"{AtmScreen.cur} 100 x {hundredNotesCount} = {100 * hundredNotesCount}");
-            Console.WriteLine($"{AtmScreen.cur} 50 x {fiftyNotesCount} = {50 * fiftyNotesCount}");
-            Console.WriteLine($"{AtmScreen.cur} 10 x {tenNotesCount} = {10 * tenNotesCount}");
-            Console.Write($"Total amount: {Utility.FormatAmount(amount)}\n\n");
+            Utility.PrintUserInputLabel("\nSummary                                                  ",true);
+            Utility.PrintUserInputLabel("-------", true);
+            Utility.PrintUserInputLabel($"{AtmScreen.cur} 100 x {hundredNotesCount} = {100 * hundredNotesCount}", true);
+            Utility.PrintUserInputLabel($"{AtmScreen.cur} 50 x {fiftyNotesCount} = {50 * fiftyNotesCount}", true);
+            Utility.PrintUserInputLabel($"{AtmScreen.cur} 10 x {tenNotesCount} = {10 * tenNotesCount}", true);
+            Utility.PrintUserInputLabel($"Total amount: {Utility.FormatAmount(amount)}\n\n", true);            
 
             string opt = Validator.GetValidIntInputAmt("1 to confirm or 0 to cancel").ToString();
 
