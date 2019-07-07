@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMConsole", "ATMConsole\ATMConsole.csproj", "{63467B05-B5C1-4AFD-9CA5-9E1654886198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMOOPProject", "ATMOOPProject\ATMOOPProject.csproj", "{BC99651F-A07E-4ED2-BA83-6F0DF454F342}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63467B05-B5C1-4AFD-9CA5-9E1654886198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63467B05-B5C1-4AFD-9CA5-9E1654886198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63467B05-B5C1-4AFD-9CA5-9E1654886198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63467B05-B5C1-4AFD-9CA5-9E1654886198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {239A0564-E91B-4087-8566-EB7AF5E18392}
+	EndGlobalSection
+EndGlobal

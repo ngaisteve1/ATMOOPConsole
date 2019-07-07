@@ -1,0 +1,16 @@
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.exe
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.deps.json
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.runtimeconfig.json
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.runtimeconfig.dev.json
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMConsole.pdb
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ConsoleTables.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMOOPProject.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\bin\Debug\netcoreapp3.0\ATMOOPProject.pdb
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.csprojAssemblyReference.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.AssemblyInfoInputs.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.AssemblyInfo.cs
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.csproj.CopyComplete
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMConsole\obj\Debug\netcoreapp3.0\ATMConsole.pdb

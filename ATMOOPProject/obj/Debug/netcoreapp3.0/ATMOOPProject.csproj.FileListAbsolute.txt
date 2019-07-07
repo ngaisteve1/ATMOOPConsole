@@ -1,0 +1,9 @@
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\bin\Debug\netcoreapp3.0\ATMOOPProject.deps.json
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\bin\Debug\netcoreapp3.0\ATMOOPProject.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.csprojAssemblyReference.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.AssemblyInfoInputs.cache
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.AssemblyInfo.cs
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\bin\Debug\netcoreapp3.0\ATMOOPProject.pdb
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.dll
+C:\Users\User\Source\Repos\ATMOOPSolution\ATMOOPProject\obj\Debug\netcoreapp3.0\ATMOOPProject.pdb
