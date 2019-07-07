@@ -35,6 +35,9 @@ Implemented Object-Oriented Programming like interface, class and object.
 
 #### Enhancement (To Do):
 - [ ] Fluent Validation to handle input validation of any data type and input length (min, max, fixed)
+- [ ] Third party transfer View Model design pattern
+- [ ] Generic pattern for input type validation in Validator class
+- [ ] 'Close' all interface method exposed in main class.
 
 ### OOP principles and C# features implemented:
 - class (POCO class and utility class)
