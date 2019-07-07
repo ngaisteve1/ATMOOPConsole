@@ -2,7 +2,6 @@
 Implemented Object-Oriented Programming like interface, class and object. 
 
 #### Other Versions
-- Procedural version - https://github.com/ngaisteve1/ATMConsole_Without_OOP. This version will have lesser features.
 - OOP version 1 - https://github.com/ngaisteve1/ATMConsole_With_OOP. This version will have lesser features.
 - Database and Entity Framework version - https://github.com/ngaisteve1/ATMConsole_WithDB. This version will have more features.
 
