@@ -13,6 +13,7 @@ namespace ATMOOPProject.StaticClass
 
         internal static void WelcomeATM()
         {
+            Console.Clear();
             Console.Title = "Meybank ATM System.";
             Console.WriteLine("Welcome to Meybank ATM.\n");
             Console.WriteLine("Please insert your ATM card.");
@@ -23,6 +24,7 @@ namespace ATMOOPProject.StaticClass
         {
             Utility.PrintUserInputLabel("Welcome back, ");
         }
+
 
         internal static void PrintLockAccount()
         {

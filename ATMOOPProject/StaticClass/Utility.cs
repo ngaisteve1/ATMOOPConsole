@@ -8,6 +8,12 @@ namespace ATMOOPProject.StaticClass
     public static class Utility
     {
         private static CultureInfo culture = new CultureInfo("ms-MY");
+        private static long tranId;
+
+        public static long GetTransactionId()
+        {
+            return ++tranId;
+        }
 
         public static string GetRawInput(string message)
         {

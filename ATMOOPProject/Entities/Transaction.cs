@@ -1,11 +1,14 @@
 ﻿using ATMOOPProject.Enum;
+using ATMOOPProject.StaticClass;
 using System;
 
 namespace ATMOOPProject.Entities
 {
     public class Transaction
     {
-        public int TransactionId { get; set; }
+        public long TransactionId { get; set; }
+
+        public long UserBankAccountId { get; set; }
 
         public DateTime TransactionDate { get; set; }
 
@@ -14,5 +17,11 @@ namespace ATMOOPProject.Entities
         public string Description { get; set; }
 
         public decimal TransactionAmount { get; set; }
+
+        public Transaction()
+        {
+            TransactionId = Utility.GetTransactionId();
+        }
     }
+
 }

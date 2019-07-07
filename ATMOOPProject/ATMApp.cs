@@ -29,6 +29,8 @@ namespace ATMOOPProject
                 new UserBankAccount() { Id=2, FullName = "Bruce Bane", AccountNumber=111222, CardNumber = 456456, CardPin = 222222, AccountBalance = 1500.30m, IsLocked = true },
                 new UserBankAccount() { Id=3, FullName = "Clark Kent", AccountNumber=888555, CardNumber = 789789, CardPin = 333333, AccountBalance = 2900.12m, IsLocked = false }
             };
+
+            _listOfTransactions = new List<Transaction>();
         }
 
         public void Execute()
@@ -38,7 +40,6 @@ namespace ATMOOPProject
             CheckCardNoPassword();
             AtmScreen.WelcomeCustomer();
             Utility.PrintConsoleWriteLine(selectedAccount.FullName, false);
-            _listOfTransactions = new List<Transaction>();
 
             while (true)
             {
@@ -187,6 +188,7 @@ namespace ATMOOPProject
             // Add transaction record - Start
             var transaction = new Transaction()
             {
+                UserBankAccountId = selectedAccount.Id,
                 TransactionDate = DateTime.Now,
                 TransactionType = TransactionType.Deposit,
                 TransactionAmount = transaction_amt
@@ -242,6 +244,7 @@ namespace ATMOOPProject
             // Add transaction record - Start
             var transaction = new Transaction()
             {
+                UserBankAccountId = selectedAccount.Id,
                 TransactionDate = DateTime.Now,
                 TransactionType = TransactionType.Withdrawal,
                 TransactionAmount = Math.Abs(transaction_amt)
@@ -268,15 +271,15 @@ namespace ATMOOPProject
             // Check giver's account balance - Start
             if (vMThirdPartyTransfer.TransferAmount > selectedAccount.AccountBalance)
             {
-                Utility.PrintMessage($"Withdrawal failed. You do not have enough " +
-                    "fund to withdraw {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)}", false);
+                Utility.PrintMessage("Withdrawal failed. You do not have enough " +
+                    $"fund to withdraw {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)}", false);
                 return;
             }
 
             if (selectedAccount.AccountBalance - vMThirdPartyTransfer.TransferAmount < minimum_kept_amt)
             {
                 Utility.PrintMessage($"Withdrawal failed. Your account needs to have " +
-                    "minimum {Utility.FormatAmount(minimum_kept_amt)}", false);
+                    $"minimum {Utility.FormatAmount(minimum_kept_amt)}", false);
                 return;
             }
             // Check giver's account balance - End
@@ -302,6 +305,7 @@ namespace ATMOOPProject
             // Add transaction record (Giver) - Start
             Transaction transaction = new Transaction()
             {
+                UserBankAccountId = selectedAccount.Id,
                 TransactionDate = DateTime.Now,
                 TransactionType = TransactionType.ThirdPartyTransfer,
                 TransactionAmount = Math.Abs(vMThirdPartyTransfer.TransferAmount),
@@ -316,6 +320,7 @@ namespace ATMOOPProject
             // Add transaction record (Receiver) - Start
             transaction = new Transaction()
             {
+                UserBankAccountId = selectedBankAccountReceiver.Id,
                 TransactionDate = DateTime.Now,
                 TransactionType = TransactionType.ThirdPartyTransfer,
                 TransactionAmount = vMThirdPartyTransfer.TransferAmount,
@@ -327,8 +332,8 @@ namespace ATMOOPProject
             // Update balance amount (Receiver)
             selectedBankAccountReceiver.AccountBalance = selectedBankAccountReceiver.AccountBalance + vMThirdPartyTransfer.TransferAmount;
 
-            Utility.PrintMessage($"You have successfully transferred out " + 
-                " {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)} to {vMThirdPartyTransfer.RecipientBankAccountName}", true);
+            Utility.PrintMessage("You have successfully transferred out " + 
+                $" {Utility.FormatAmount(vMThirdPartyTransfer.TransferAmount)} to {vMThirdPartyTransfer.RecipientBankAccountName}", true);
         }
 
         private bool PreviewBankNotesCount(decimal amount)
@@ -351,20 +356,22 @@ namespace ATMOOPProject
 
         public void ViewTransaction()
         {
+            // Filter transaction list
+            var filteredTransactionList = _listOfTransactions.Where(t => t.UserBankAccountId == selectedAccount.Id).ToList();
 
-            if (_listOfTransactions.Count <= 0)
+            if (filteredTransactionList.Count <= 0)
                 Utility.PrintMessage($"There is no transaction yet.", true);
             else
             {
-                var table = new ConsoleTable("Transaction Date", "Type", "Descriptions", "Amount " + AtmScreen.cur);
+                var table = new ConsoleTable("Id","Transaction Date", "Type", "Descriptions", "Amount " + AtmScreen.cur);
 
-                foreach (var tran in _listOfTransactions)
+                foreach (var tran in filteredTransactionList)
                 {
-                    table.AddRow(tran.TransactionDate, tran.TransactionType, tran.Description, tran.TransactionAmount);
+                    table.AddRow(tran.TransactionId, tran.TransactionDate, tran.TransactionType, tran.Description, tran.TransactionAmount);
                 }
                 table.Options.EnableCount = false;
                 table.Write();
-                Utility.PrintMessage($"You have performed {_listOfTransactions.Count} transactions.", true);
+                Utility.PrintMessage($"You have {filteredTransactionList.Count} transaction(s).", true);
             }
         }
 
