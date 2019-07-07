@@ -25,6 +25,7 @@ Implemented Object-Oriented Programming like interface, class and object.
 #### Business Rules:
 - User is not allow to withdraw or transfer more than the balance amount. A minimum RM20 is needed to maintain the bank account.
 - If user key in the wrong pin more than 3 times, the bank account will be locked.
+- One user is tied to only one bank account in this version. 
 
 #### Assumption:
 - All bank account are the from the same bank
