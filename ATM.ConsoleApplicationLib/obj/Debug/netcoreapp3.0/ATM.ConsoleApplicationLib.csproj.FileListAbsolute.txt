@@ -1,0 +1,9 @@
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\bin\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.deps.json
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\bin\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.dll
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\bin\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.pdb
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.csprojAssemblyReference.cache
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.csproj.CoreCompileInputs.cache
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.AssemblyInfoInputs.cache
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.AssemblyInfo.cs
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.dll
+C:\dotnet\atm2\ATM.ConsoleApplicationLib\obj\Debug\netcoreapp3.0\ATM.ConsoleApplicationLib.pdb

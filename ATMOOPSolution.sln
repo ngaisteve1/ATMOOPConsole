@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMConsole", "ATMConsole\ATMConsole.csproj", "{63467B05-B5C1-4AFD-9CA5-9E1654886198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATMConsole", "ATMConsole\ATMConsole.csproj", "{63467B05-B5C1-4AFD-9CA5-9E1654886198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMOOPProject", "ATMOOPProject\ATMOOPProject.csproj", "{BC99651F-A07E-4ED2-BA83-6F0DF454F342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATMOOPProject", "ATMOOPProject\ATMOOPProject.csproj", "{BC99651F-A07E-4ED2-BA83-6F0DF454F342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.ConsoleApplication", "ATM.ConsoleApplication\ATM.ConsoleApplication.csproj", "{F275BF30-E116-4AE7-9D06-EB465ED209A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.Domain", "ATM.Domain\ATM.Domain.csproj", "{2225F5C1-4BFF-4C57-9098-77C1C5C14D70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.ConsoleApplicationLib", "ATM.ConsoleApplicationLib\ATM.ConsoleApplicationLib.csproj", "{9EC4F3BB-7688-48C9-8D40-BBF64F65BF3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC99651F-A07E-4ED2-BA83-6F0DF454F342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F275BF30-E116-4AE7-9D06-EB465ED209A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F275BF30-E116-4AE7-9D06-EB465ED209A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F275BF30-E116-4AE7-9D06-EB465ED209A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F275BF30-E116-4AE7-9D06-EB465ED209A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2225F5C1-4BFF-4C57-9098-77C1C5C14D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2225F5C1-4BFF-4C57-9098-77C1C5C14D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2225F5C1-4BFF-4C57-9098-77C1C5C14D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2225F5C1-4BFF-4C57-9098-77C1C5C14D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC4F3BB-7688-48C9-8D40-BBF64F65BF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC4F3BB-7688-48C9-8D40-BBF64F65BF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC4F3BB-7688-48C9-8D40-BBF64F65BF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC4F3BB-7688-48C9-8D40-BBF64F65BF3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,9 @@
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.csprojAssemblyReference.cache
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.csproj.CoreCompileInputs.cache
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.AssemblyInfoInputs.cache
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.AssemblyInfo.cs
+C:\dotnet\atm2\ATM.Domain\bin\Debug\netstandard2.0\ATM.Domain.deps.json
+C:\dotnet\atm2\ATM.Domain\bin\Debug\netstandard2.0\ATM.Domain.dll
+C:\dotnet\atm2\ATM.Domain\bin\Debug\netstandard2.0\ATM.Domain.pdb
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.dll
+C:\dotnet\atm2\ATM.Domain\obj\Debug\netstandard2.0\ATM.Domain.pdb
