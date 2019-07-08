@@ -6,7 +6,7 @@ namespace ATMOOPProject.Entities
 {
     public class Transaction
     {
-        public long TransactionId { get; set; }
+        public long TransactionId { get; private set; }
 
         public long UserBankAccountId { get; set; }
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace ATMOOPProject.StaticClass
@@ -9,42 +11,35 @@ namespace ATMOOPProject.StaticClass
         // This class in charge of user input validation.
         // Validation here will not include business rules validation.
 
-        public static decimal GetValidDecimalInputAmt(string input)
+        public static T Convert<T>(this string input)
         {
             bool valid = false;
-            string rawInput;
-            decimal amount = 0;
+            string rawInput;            
 
             // Get user's input input type is valid
             while (!valid)
             {
                 rawInput = Utility.GetRawInput(input);
-                valid = decimal.TryParse(rawInput, out amount);
-                if (!valid)
+
+                try
+                {
+                    var converter = TypeDescriptor.GetConverter(typeof(T));
+                    if (converter != null)
+                    {
+                        // Cast ConvertFromString(string text) : object to (T)
+                        return (T)converter.ConvertFromString(rawInput);
+                    }
+                    return default(T);
+                }
+                catch
+                {
                     Utility.PrintMessage("Invalid input. Try again.", false);
+                }
             }
+            return default(T);
 
-            return amount;
         }
-
-        public static long GetValidIntInputAmt(string input)
-        {
-            bool valid = false;
-            string rawInput;
-            long amount = 0;
-
-            // Get user's input input type is valid
-            while (!valid)
-            {
-                rawInput = Utility.GetRawInput(input);
-                valid = long.TryParse(rawInput, out amount);
-                if (!valid)
-                    Utility.PrintMessage("Invalid input. Try again.", false);
-            }
-
-            return amount;
-        }
-
 
     }
+
 }

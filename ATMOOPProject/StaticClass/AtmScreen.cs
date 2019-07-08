@@ -73,12 +73,7 @@ namespace ATMOOPProject.StaticClass
         {
             Console.Write("Account balance amount: ");
         }
-
-        internal static void PrintMakeWithdrawalScreen()
-        {
-            Console.Write("Enter amount: ");
-        }
-
+        
         // This is the only non-static method.
         // Reason is this method needs to return an object.
         // ToDo: Find other way to solve this design issue.
@@ -86,9 +81,11 @@ namespace ATMOOPProject.StaticClass
         {
             var vMThirdPartyTransfer = new VMThirdPartyTransfer();
 
-            vMThirdPartyTransfer.RecipientBankAccountNumber = Validator.GetValidIntInputAmt("recipient's account number");
+            //vMThirdPartyTransfer.RecipientBankAccountNumber = Validator.GetValidIntInputAmt("recipient's account number");
+            vMThirdPartyTransfer.RecipientBankAccountNumber = Validator.Convert<long>($"amount {AtmScreen.cur}");
 
-            vMThirdPartyTransfer.TransferAmount = Validator.GetValidDecimalInputAmt("amount");
+            //vMThirdPartyTransfer.TransferAmount = Validator.GetValidDecimalInputAmt($"amount {AtmScreen.cur}");            
+            vMThirdPartyTransfer.TransferAmount = Validator.Convert<decimal>($"amount {AtmScreen.cur}");
 
             vMThirdPartyTransfer.RecipientBankAccountName = Utility.GetRawInput("recipient's account name");
             // no validation here yet.

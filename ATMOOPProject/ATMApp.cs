@@ -60,7 +60,8 @@ namespace ATMOOPProject
                 // Card validation includes read card number and check bank account status
                 // and other security checking.
 
-                inputAccount.CardNumber = Validator.GetValidIntInputAmt("ATM Card Number");
+                //inputAccount.CardNumber = Validator.GetValidIntInputAmt("ATM Card Number");
+                inputAccount.CardNumber = Validator.Convert<long>("ATM Card Number");
 
                 Utility.PrintUserInputLabel("Enter 6 Digit PIN: ");
                 inputAccount.CardPin = Convert.ToInt32(Utility.GetHiddenConsoleInput());
@@ -111,7 +112,8 @@ namespace ATMOOPProject
 
         private void ProcessMenuOption()
         {
-            switch (Validator.GetValidIntInputAmt("your option"))
+            //switch (Validator.GetValidIntInputAmt("your option"))
+            switch (Validator.Convert<int>("your option"))
             {
                 case (int)SecureMenu.CheckBalance:
                     CheckBalance();
@@ -158,7 +160,8 @@ namespace ATMOOPProject
             Utility.PrintConsoleWriteLine("\nNote: Actual ATM system will just\nlet you " +
             "place bank notes into physical ATM machine. \n");
 
-            var transaction_amt = Validator.GetValidDecimalInputAmt("amount");
+            //var transaction_amt = Validator.GetValidIntInputAmt($"amount {AtmScreen.cur}");
+            var transaction_amt = Validator.Convert<int>($"amount {AtmScreen.cur}");
 
             Utility.PrintUserInputLabel("\nCheck and counting bank notes.");
             Utility.printDotAnimation();
@@ -208,7 +211,8 @@ namespace ATMOOPProject
             Console.WriteLine("\nNote: For GUI or actual ATM system, user can ");
             Console.Write("choose some default withdrawal amount or custom amount. \n\n");
 
-            var transaction_amt = Validator.GetValidDecimalInputAmt("amount");
+          //  var transaction_amt = Validator.GetValidIntInputAmt($"amount {AtmScreen.cur}");
+            var transaction_amt = Validator.Convert<int>($"amount {AtmScreen.cur}");
 
             // Input data validation - Start
             if (transaction_amt <= 0)
@@ -347,11 +351,11 @@ namespace ATMOOPProject
             Utility.PrintUserInputLabel($"{AtmScreen.cur} 100 x {hundredNotesCount} = {100 * hundredNotesCount}", true);
             Utility.PrintUserInputLabel($"{AtmScreen.cur} 50 x {fiftyNotesCount} = {50 * fiftyNotesCount}", true);
             Utility.PrintUserInputLabel($"{AtmScreen.cur} 10 x {tenNotesCount} = {10 * tenNotesCount}", true);
-            Utility.PrintUserInputLabel($"Total amount: {Utility.FormatAmount(amount)}\n\n", true);            
+            Utility.PrintUserInputLabel($"Total amount: {Utility.FormatAmount(amount)}\n\n", true);
 
-            string opt = Validator.GetValidIntInputAmt("1 to confirm or 0 to cancel").ToString();
-
-            return opt.Equals("1");
+            //string opt = Validator.GetValidIntInputAmt("1 to confirm or 0 to cancel").ToString();
+            char opt = Validator.Convert<char>("1 to confirm");
+            return opt.Equals('1');
         }
 
         public void ViewTransaction()
