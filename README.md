@@ -7,8 +7,8 @@ Implemented Object-Oriented Programming like interface, class and object.
 
 ### Software Development Summary
 - Technology: C#
-- Framework: .NET Core 2.2
-- Project Type: Class Library and Console
+- Framework: .NET Standard, .NET Core 2.2
+- Project Type: Class Library (.NET Standard and .NET Core) and Console (.NET Core)
 - IDE: Visual Studio Community 2019 (Version 16.1.5)
 - Paradigm or pattern of programming: Object-Oriented Programming (OOP)
 - Data: Data of this demo program (Bank Account and Transaction data) are stored using List objects. No database is used on purpose for this demo version.
@@ -37,14 +37,12 @@ Implemented Object-Oriented Programming like interface, class and object.
 #### Enhancement (To Do):
 - [ ] Fluent Validation to handle input validation of any data type and input length (min, max, fixed)
 - [ ] Third party transfer View Model design pattern
-- [ ] Generic pattern for input type validation in Validator class
 - [ ] 'Close' all interface method exposed in main class.
 
 ### OOP principles and C# features implemented:
 - class (POCO class and utility class)
 - enum
 - object
-- objec constructor
 - collection initializer
 - encapsulation: private, internal and public, field and property
 - abstraction: interface
