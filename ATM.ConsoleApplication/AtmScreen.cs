@@ -1,5 +1,6 @@
 ﻿using ATM.ConsoleApplication.ViewModels;
 using ATM.ConsoleApplicationLib;
+using ATM.Domain.Entities;
 using System;
 
 namespace ATM.ConsoleApplication
@@ -19,9 +20,9 @@ namespace ATM.ConsoleApplication
             Utility.PrintEnterMessage();
         }
 
-        internal static void WelcomeCustomer()
-        {
-            Utility.PrintUserInputLabel("Welcome back, ");
+        internal static void WelcomeCustomer(string fullName)
+        {            
+            Utility.PrintConsoleWriteLine("Welcome back, " + fullName);
         }
 
 
@@ -33,6 +34,21 @@ namespace ATM.ConsoleApplication
 
             Utility.PrintEnterMessage();
             Environment.Exit(1);
+        }
+
+        internal UserBankAccount LoginForm()
+        {
+            var vmUserBankAccount = new UserBankAccount();
+
+            // Actual ATM system will accept and validate physical ATM card.
+            // Card validation includes read card number and check bank account status
+            // and other security checking.
+
+            vmUserBankAccount.CardNumber = Validator.Convert<long>("card number");
+                     
+            vmUserBankAccount.CardPin = Convert.ToInt32(Utility.GetHiddenConsoleInput("Enter card pin: "));          
+
+            return vmUserBankAccount;
         }
 
         internal static void LoginProgress()

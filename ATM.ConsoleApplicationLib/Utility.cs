@@ -21,13 +21,34 @@ namespace ATM.ConsoleApplicationLib
             return Console.ReadLine();
         }
 
-        public static string GetHiddenConsoleInput()
+        public static string GetHiddenConsoleInput(string text)
         {
+            bool prompt = true;
+            
+            
             StringBuilder input = new StringBuilder();
             while (true)
             {
+                if(prompt)
+                    Console.Write(text);
+
                 var key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.Enter) break;
+                prompt = false;
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    if (input.Length == 6)
+                    {
+                        break;                        
+                    }
+                    else
+                    {
+                        PrintMessage("\nPlease enter 6 digit.", false);
+                        prompt = true;
+                        input.Clear();
+                    }
+                }
+                    
                 if (key.Key == ConsoleKey.Backspace && input.Length > 0) input.Remove(input.Length - 1, 1);
                 else if (key.Key != ConsoleKey.Backspace) input.Append(key.KeyChar);
             }

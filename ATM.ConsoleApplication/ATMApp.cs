@@ -20,6 +20,12 @@ namespace ATM.ConsoleApplication
         private UserBankAccount selectedAccount;
         private const decimal minimum_kept_amt = 20;
         private List<Transaction> _listOfTransactions;
+        private readonly AtmScreen screen;
+
+        public AtmApp()
+        {
+            screen = new AtmScreen();
+        }
 
         public void Initialization()
         {
@@ -38,8 +44,7 @@ namespace ATM.ConsoleApplication
             AtmScreen.WelcomeATM();
 
             CheckCardNoPassword();
-            AtmScreen.WelcomeCustomer();
-            Utility.PrintConsoleWriteLine(selectedAccount.FullName, false);
+            AtmScreen.WelcomeCustomer(selectedAccount.FullName);
 
             while (true)
             {
@@ -54,18 +59,7 @@ namespace ATM.ConsoleApplication
 
             while (isLoginPassed == false)
             {
-                var inputAccount = new UserBankAccount();
-
-                // Actual ATM system will accept and validate physical ATM card.
-                // Card validation includes read card number and check bank account status
-                // and other security checking.
-
-                //inputAccount.CardNumber = Validator.GetValidIntInputAmt("ATM Card Number");
-                inputAccount.CardNumber = Validator.Convert<long>("ATM Card Number");
-
-                Utility.PrintUserInputLabel("Enter 6 Digit PIN: ");
-                inputAccount.CardPin = Convert.ToInt32(Utility.GetHiddenConsoleInput());
-                // for brevity, length 6 is not validated and data type.
+                var inputAccount = screen.LoginForm();
 
                 AtmScreen.LoginProgress();
 
@@ -124,7 +118,7 @@ namespace ATM.ConsoleApplication
                     MakeWithdrawal();
                     break;
                 case (int)SecureMenu.ThirdPartyTransfer:
-                    var screen = new AtmScreen();
+                    
                     var vMThirdPartyTransfer = screen.ThirdPartyTransferForm();
                     PerformThirdPartyTransfer(vMThirdPartyTransfer);
                     break;
@@ -166,6 +160,7 @@ namespace ATM.ConsoleApplication
             Console.SetCursorPosition(0, Console.CursorTop-3);
             Console.WriteLine("");
 
+            // Guard clause
             if (transaction_amt <= 0)
             {
                 Utility.PrintMessage("Amount needs to be more than zero. Try again.", false);
@@ -325,7 +320,6 @@ namespace ATM.ConsoleApplication
             Utility.PrintUserInputLabel($"{AtmScreen.cur} 10 x {tenNotesCount} = {10 * tenNotesCount}", true);
             Utility.PrintUserInputLabel($"Total amount: {Utility.FormatAmount(amount)}\n\n", true);
 
-            //string opt = Validator.GetValidIntInputAmt("1 to confirm or 0 to cancel").ToString();
             char opt = Validator.Convert<char>("1 to confirm");
             return opt.Equals('1');
         }
